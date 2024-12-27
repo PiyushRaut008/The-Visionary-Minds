@@ -8,7 +8,7 @@ navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('open'); // Transform hamburger into "X"
 });
 
-// Close navigation bar when a link is clicked
+// Close navigation bar when a liank is clicked
 document.querySelectorAll('.nav-links li a').forEach(link => {
     link.addEventListener('click', () => {
         navLinks.classList.remove('active'); // Close navigation
@@ -54,8 +54,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Initial image visibility
     images[currentIndex].classList.add('visible');
 
-    // Change images every 6 seconds (adjust as necessary)
-    setInterval(showNextImage, 3000); // 6000ms = 6 seconds
+    // Change images every 3 seconds (adjust as necessary)
+    setInterval(showNextImage, 3000); // 3000ms = 3 seconds
 
      // Show previous image when left arrow is clicked
      prevArrow.addEventListener('click', () => {
@@ -68,6 +68,13 @@ document.addEventListener("DOMContentLoaded", function () {
     nextArrow.addEventListener('click', showNextImage);
 
 });
+
+document.addEventListener("scroll", function () {
+    const section = document.querySelector(".events-section");
+    const offset = window.scrollY * 0.5;
+    section.style.backgroundPositionY = `${offset}px`;
+});
+
 
 
 
