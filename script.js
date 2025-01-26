@@ -75,6 +75,85 @@ document.addEventListener("scroll", function () {
     section.style.backgroundPositionY = `${offset}px`;
 });
 
+// Select all team groups
+const teamGroups = document.querySelectorAll('.team-group');
+let currentGroupIndex = 0;
 
+// Function to show the next group
+function showNextGroup() {
+    // Hide all groups
+    teamGroups.forEach(group => group.classList.remove('visible'));
+    
+    // Show the next group in sequence
+    teamGroups[currentGroupIndex].classList.add('visible');
+    
+    // Update the index to point to the next group
+    currentGroupIndex = (currentGroupIndex + 1) % teamGroups.length;
+}
+
+// Initially show the first group
+showNextGroup();
+
+// Change groups every 6 seconds
+setInterval(showNextGroup, 6000); // 6000ms = 6 seconds
+document.addEventListener("DOMContentLoaded", function () {
+    const eventIcons = document.querySelectorAll('.event-icon');
+
+    // Function to check if an element is in the viewport
+    function isInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return rect.top >= 0 && rect.left >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && rect.right <= (window.innerWidth || document.documentElement.clientWidth);
+    }
+
+    // Trigger ray animation when the event icon enters the viewport
+    function triggerRaysOnScroll() {
+        eventIcons.forEach(icon => {
+            if (isInViewport(icon) && !icon.classList.contains('ripple-active')) {
+                icon.classList.add('ripple-active');
+                // Optionally add some logic here to remove ripple after animation ends
+                setTimeout(() => icon.classList.remove('ripple-active'), 1000);  // Adjust time to match animation duration
+            }
+        });
+    }
+
+    // Listen for scroll events to trigger rays when the element is in view
+    window.addEventListener("scroll", triggerRaysOnScroll);
+
+    // Run on page load in case the icons are already in the viewport
+    triggerRaysOnScroll();
+});
+
+
+  
+document.addEventListener("DOMContentLoaded", function () {
+    const eventIcons = document.querySelectorAll('.event-icon');
+
+    // Function to check if an element is in the viewport
+    function isInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    // Trigger ray animation when the event icon enters the viewport
+    function triggerRaysOnScroll() {
+        eventIcons.forEach(icon => {
+            if (isInViewport(icon) && !icon.classList.contains('ripple-active')) {
+                icon.classList.add('ripple-active');
+                setTimeout(() => icon.classList.remove('ripple-active'), 1000); // Adjust timing to match animation
+            }
+        });
+    }
+
+    // Listen for scroll events to trigger rays when the element is in view
+    window.addEventListener("scroll", triggerRaysOnScroll);
+
+    // Run on page load in case the icons are already in the viewport
+    triggerRaysOnScroll();
+});
 
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Make sure the body and html take up the full screen */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        /* Container for the image to take up full viewport height and width */
+        .team-structure {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            display: flex;
+            justify-content: center; /* Center the image horizontally */
+            align-items: center; /* Center the image vertically */
+        }
+
+        /* Make the image responsive */
+        .team {
+            width: 100%; /* Make image width 100% of the container */
+            height: 100%; /* Make image height 100% of the container */
+            object-fit: contain; /* Make the image fit within the container without being cropped */
+        }
+
+        @media (max-width: 768px) {
+            .team {
+                height: 100%; /* Ensure height remains full */
+                object-position: center center; /* Ensure image remains centered */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="team-structure">
+    <img src="assets/team.jpeg" alt="team members" class="team">
+</body>
+</html>
